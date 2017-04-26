@@ -1,5 +1,5 @@
 function getSpeed(min, max) {
-  return Math.floor(Math.random() * (max-min))+min;
+    return Math.floor(Math.random() * (max-min))+min;
 }
 // Enemies our player must avoid
 var Enemy = function(startLane) {
@@ -53,19 +53,19 @@ var Player = function() {
     this.handleInput = function(input) {
         switch (input) {
             case 'left':
-                this.x = this.x - 101;
+                this.x = this.x - this.col;
                 console.log("A");
                 break;
             case 'up':
-                this.y = this.y - 83;
+                this.y = this.y - this.row;
                 console.log("B");
                 break;
             case 'right':
-                this.x = this.x + 101;
+                this.x = this.x + this.col;
                 console.log("C");
                 break;
             case 'down':
-                this.y = this.y + 83;
+                this.y = this.y + this.row;
                 console.log("D");
                 break;
         }
@@ -77,9 +77,6 @@ var Player = function() {
 // Update the player's position
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    var col = 101;
-    var row = 83;
-    var rowOffset = 13
     if ((this.y < - this.rowOffset) || (this.y > 5 * this.row - this.rowOffset)) {
         this.y = 5 * this.row - this.rowOffset;
     };
