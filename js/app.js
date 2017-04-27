@@ -39,7 +39,7 @@ Enemy.prototype.render = function() {
 };
 
 Enemy.prototype.checkCollisions = function() {
-    var spriteOffset = 17;
+    var spriteOffset = 20;
     var enemyRect = {
         x: this.x,
         y: this.y + this.rowOffset,
@@ -49,7 +49,7 @@ Enemy.prototype.checkCollisions = function() {
     var playerRect = {
         x: player.x + spriteOffset,
         y: player.y + player.rowOffset,
-        width: 70,
+        width: 60,
         height: 80,
     };
 
@@ -81,20 +81,23 @@ var Player = function() {
     this.handleInput = function(input) {
         switch (input) {
             case 'left':
-                this.x = this.x - this.col;
-                console.log("A");
+                if (this.x > 0) {
+                    this.x = this.x - this.col;
+                };
                 break;
             case 'up':
                 this.y = this.y - this.row;
                 console.log("B");
                 break;
             case 'right':
-                this.x = this.x + this.col;
-                console.log("C");
+                if (this.x < 4 * this.col) {
+                    this.x = this.x + this.col;
+                };
                 break;
             case 'down':
-                this.y = this.y + this.row;
-                console.log("D");
+                if (this.y < 5 * this.row - this.rowOffset) {
+                    this.y = this.y + this.row;
+                }
                 break;
         }
     }
@@ -105,16 +108,16 @@ var Player = function() {
 // Update the player's position
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    if (this.y > 5 * this.row - this.rowOffset) {
-        this.y = 5 * this.row - this.rowOffset;
-    };
-    if (this.x < 0) {
-        this.x = 0;
-    };
-    if (this.x > 4 * this.col) {
-        this.x = 4 * this.col;
-    };
-    if (this.y < - this.rowOffset) {
+    //if (this.y > 5 * this.row - this.rowOffset) {
+    //    this.y = 5 * this.row - this.rowOffset;
+    //};
+    //if (this.x < 0) {
+    //    this.x = 0;
+    //};
+    //if (this.x > 4 * this.col) {
+    //    this.x = 4 * this.col;
+    //};
+    if (this.y < this.row - this.rowOffset) {
       window.alert("CONGRATULATIONS! Level passed!");
       player.reset();
     };
