@@ -34,7 +34,7 @@ Enemy.prototype.render = function() {
 };
 
 Enemy.prototype.checkCollisions = function() {
-    var spriteOffset = 20;
+    var playerOffset = 20;
     var enemyRect = {
         x: this.x,
         y: this.y + this.rowOffset,
@@ -42,7 +42,7 @@ Enemy.prototype.checkCollisions = function() {
         height: 70
     };
     var playerRect = {
-        x: player.x + spriteOffset,
+        x: player.x + playerOffset,
         y: player.y + player.rowOffset,
         width: 60,
         height: 80,
