@@ -3,9 +3,6 @@ function getSpeed(min, max) {
 }
 // Enemies our player must avoid
 var Enemy = function(startLane) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.col = 101;
@@ -18,12 +15,10 @@ var Enemy = function(startLane) {
 
 };
 
-// Update the enemy's position, required method for game
+// Update the enemy's position
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // ensure the game runs at the same speed for all computers.
     this.x += this.speed * dt;
 
     if (this.x > 505) {
@@ -33,7 +28,7 @@ Enemy.prototype.update = function(dt) {
     this.checkCollisions();
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the enemy on the screen
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -63,10 +58,6 @@ Enemy.prototype.checkCollisions = function() {
         player.reset();
     };
 };
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 
 // Player class
 var Player = function() {
@@ -108,15 +99,6 @@ var Player = function() {
 // Update the player's position
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    //if (this.y > 5 * this.row - this.rowOffset) {
-    //    this.y = 5 * this.row - this.rowOffset;
-    //};
-    //if (this.x < 0) {
-    //    this.x = 0;
-    //};
-    //if (this.x > 4 * this.col) {
-    //    this.x = 4 * this.col;
-    //};
     if (this.y < this.row - this.rowOffset) {
       window.alert("CONGRATULATIONS! Level passed!");
       player.reset();
@@ -133,10 +115,6 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
 var enemyA = new Enemy(1);
 var enemyB = new Enemy(2);
 var enemyC = new Enemy(3);
@@ -145,9 +123,8 @@ var enemyD = new Enemy(2);
 var allEnemies = [enemyA, enemyB, enemyC, enemyD];
 var player = new Player();
 
-
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
