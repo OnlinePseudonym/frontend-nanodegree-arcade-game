@@ -59,8 +59,8 @@ Enemy.prototype.checkCollisions = function() {
         enemyRect.y < playerRect.y + playerRect.height &&
         enemyRect.y + enemyRect.height > playerRect.y
     ) {
-        player.x = player.startPos.col * player.col;
-        player.y = player.startPos.row * player.row - player.rowOffset;
+        console.log("collision detected");
+        player.reset();
     };
 };
 
@@ -113,17 +113,22 @@ Player.prototype.update = function(dt) {
     };
     if (this.x > 4 * this.col) {
         this.x = 4 * this.col;
-    }
+    };
     if (this.y < - this.rowOffset) {
-      window.alert("CONGRATULATIONS! Level passed!")
-      this.y = 5 * this.row - this.rowOffset;
-    }
+      window.alert("CONGRATULATIONS! Level passed!");
+      player.reset();
+    };
+};
+
+Player.prototype.reset = function() {
+    this.x = this.startPos.col * this.col;
+    this.y = this.startPos.row * this.row - this.rowOffset;
 };
 
 // Draw the player on the screen
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 
 // Now instantiate your objects.
