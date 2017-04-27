@@ -28,12 +28,40 @@ Enemy.prototype.update = function(dt) {
 
     if (this.x > 505) {
         this.x = -101;
-    }
+    };
+
+    this.checkCollisions();
 };
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+Enemy.prototype.checkCollisions = function() {
+    var spriteOffset = 17;
+    var enemyRect = {
+        x: this.x,
+        y: this.y + this.rowOffset,
+        width: 100,
+        height: 70
+    };
+    var playerRect = {
+        x: player.x + spriteOffset,
+        y: player.y + player.rowOffset,
+        width: 70,
+        height: 80,
+    };
+
+    if (
+        enemyRect.x < playerRect.x + playerRect.width &&
+        enemyRect.x + enemyRect.width > playerRect.x &&
+        enemyRect.y < playerRect.y + playerRect.height &&
+        enemyRect.y + enemyRect.height > playerRect.y
+    ) {
+        player.x = player.startPos.col * player.col;
+        player.y = player.startPos.row * player.row - player.rowOffset;
+    };
 };
 
 // Now write your own player class
