@@ -105,7 +105,7 @@ var Player = function() {
 // Update the player's position
 // Parameter: dt, a time delta between ticks
 Player.prototype.update = function(dt) {
-    if ((this.y < - this.rowOffset) || (this.y > 5 * this.row - this.rowOffset)) {
+    if (this.y > 5 * this.row - this.rowOffset) {
         this.y = 5 * this.row - this.rowOffset;
     };
     if (this.x < 0) {
@@ -113,6 +113,10 @@ Player.prototype.update = function(dt) {
     };
     if (this.x > 4 * this.col) {
         this.x = 4 * this.col;
+    }
+    if (this.y < - this.rowOffset) {
+      window.alert("CONGRATULATIONS! Level passed!")
+      this.y = 5 * this.row - this.rowOffset;
     }
 };
 
