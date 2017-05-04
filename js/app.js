@@ -24,7 +24,7 @@ Enemy.prototype.update = function(dt) {
     // when enemy goes offscreen reset to starting position
     if (this.x > 505) {
         this.x = -101;
-    };
+    }
 
     this.checkCollisions();
 };
@@ -61,27 +61,27 @@ Enemy.prototype.checkCollisions = function() {
         enemyRect.y + enemyRect.height > playerRect.y
     ) {
         player.reset(); //reset player on collision
-    };
+    }
 };
 
 // Player class
 var Player = function() {
     this.col = 101; //column width
     this.row = 83; //row height
-    this.rowOffset = 13 //offset sprite to center in row
+    this.rowOffset = 13; //offset sprite to center in row
     //default starting position
     this.startPos = {
         row:5,
         col:2
     };
-    this.sprite = "images/char-boy.png"
+    this.sprite = "images/char-boy.png";
     //handle movement and limit movement to within grid
     this.handleInput = function(input) {
         switch (input) {
             case 'left':
                 if (this.x > 0) {
                     this.x = this.x - this.col;
-                };
+                }
                 break;
             case 'up':
                 this.y = this.y - this.row;
@@ -89,7 +89,7 @@ var Player = function() {
             case 'right':
                 if (this.x < 4 * this.col) {
                     this.x = this.x + this.col;
-                };
+                }
                 break;
             case 'down':
                 if (this.y < 5 * this.row - this.rowOffset) {
@@ -97,7 +97,7 @@ var Player = function() {
                 }
                 break;
         }
-    }
+    };
     //initialize starting pos
     this.reset();
 };
@@ -109,7 +109,7 @@ Player.prototype.update = function(dt) {
     if (this.y < this.row - this.rowOffset) {
         window.alert("CONGRATULATIONS! Level passed!");
         player.reset();
-    };
+    }
 };
 
 // Set starting position based on variables in player object
