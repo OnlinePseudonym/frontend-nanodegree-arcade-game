@@ -8,13 +8,13 @@
 
 ## Description
 
-This is a simple matching game with 8 pairs of matching cards face down on the
-game board
+This is arcade game clone in which you need to avoid enemies and cross the road.
 
 ## Instructions
 
-Open the index.html in your browser and click the play button to begin game, click
-cards to flip them over.
+Open the index.html in your browser and click the play button to begin game, use
+your arrow keys to navigate the game board and avoid the bugs. Reach the water
+to pass the level.
 
 
 ## License
