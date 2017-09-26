@@ -41,24 +41,24 @@ Enemy.prototype.checkCollisions = function() {
     var enemyRect = {
         x: this.x,
         y: this.y + this.rowOffset,
-        width: 100,
-        height: 70
+        WIDTH: 100,
+        HEIGHT: 70
     };
     // create player rectangle for collision check
     // set width/height of collision box
     var playerRect = {
         x: player.x+ playerOffset,
         y: player.y + player.rowOffset,
-        width: 60,
-        height: 80
+        WIDTH: 60,
+        HEIGHT: 80
     };
     //check whether rectangles collide
     // algorithm used from https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
     if (
-        enemyRect.x < playerRect.x + playerRect.width &&
-        enemyRect.x + enemyRect.width > playerRect.x &&
-        enemyRect.y < playerRect.y + playerRect.height &&
-        enemyRect.y + enemyRect.height > playerRect.y
+        enemyRect.x < playerRect.x + playerRect.WIDTH &&
+        enemyRect.x + enemyRect.WIDTH > playerRect.x &&
+        enemyRect.y < playerRect.y + playerRect.HEIGHT &&
+        enemyRect.y + enemyRect.HEIGHT > playerRect.y
     ) {
         player.reset(); //reset player on collision
     }
@@ -108,7 +108,7 @@ Player.prototype.update = function(dt) {
     // display popup if player reaches water
     if (this.y < this.row - this.rowOffset) {
         window.alert("CONGRATULATIONS! Level passed!");
-        player.reset();
+        this.reset();
     }
 };
 
